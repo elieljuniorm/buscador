@@ -1,9 +1,10 @@
 import React from 'react'
+import Container from './main/Container'
 
 function App() {
   return (
-    <div>
-      <h1>Buscador de CEP</h1>
+    <div className='App'>
+      <Container/>
     </div>
   )
 }
