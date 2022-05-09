@@ -11,18 +11,27 @@ function Container() {
 
     const [input, setInput] = useState('')
 
+    const [cep, setCep] = useState({})
+
     async function handleSearch(){
-        /* 696120370 */
+
         if(input === ''){
             alert('Preencha algum CEP')
             return
         }
         
         try{
-            const response = await api.get(`${input}/json`)
-            console.log(response.data)
+
+            const response = await api.get(`${input}/json`);
+            setCep(response.data);
+            setInput('')
+            console.log(setCep)
+
         }catch{
-            alert('Ops! Erro ao buscar.')
+
+            alert('Ops! Erro ao buscar.');
+            setInput('')
+
         }
     }
 
@@ -42,17 +51,21 @@ function Container() {
                 <FaSearch/>
             </button>
         </div>
+        
+        { Object.keys(cep).length > 0 && (/* retorna a informação somente ser for preenchida */
 
-        <main className={ styles.main }>
+            <main className={ styles.main }>
 
-            <h2>Cep: 66.120-370</h2>
+                <h2>CEP: {cep.cep}</h2>
 
-            <span>Rua Severa Romana</span>
-            <span>Entre São Sebastião e Alferes Costas</span>
-            <span>Savramenta</span>
-            <span>Belém - PA</span>
+                <span>Logradouro: {cep.logradouro}</span>
+                <span>Bairro: {cep.bairro}</span>
+                <span>Cidade: {cep.localidade} - {cep.uf}</span>
 
-        </main>
+            </main>
+
+        ) }
+        
 
     </div>
   )
