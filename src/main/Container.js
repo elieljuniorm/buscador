@@ -56,7 +56,7 @@ function Container() {
 
             <main className={ styles.main }>
 
-                <h2>CEP: {cep.cep}</h2>
+                <h2>Cep: {cep.cep}</h2>
 
                 <span>Logradouro: {cep.logradouro}</span>
                 <span>Bairro: {cep.bairro}</span>
