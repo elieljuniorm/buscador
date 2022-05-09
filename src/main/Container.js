@@ -5,12 +5,25 @@ import styles from './Container.module.css'
 
 import {FaSearch} from "react-icons/fa";
 
+import api from '../services/api';
+
 function Container() {
 
     const [input, setInput] = useState('')
 
-    function handleSearch(){
-        alert('Valor do Input ' + input)
+    async function handleSearch(){
+        /* 696120370 */
+        if(input === ''){
+            alert('Preencha algum CEP')
+            return
+        }
+        
+        try{
+            const response = await api.get(`${input}/json`)
+            console.log(response.data)
+        }catch{
+            alert('Ops! Erro ao buscar.')
+        }
     }
 
   return (
