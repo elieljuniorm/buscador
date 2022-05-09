@@ -1,19 +1,31 @@
-import React from 'react'
+import {React,
+        useState} from 'react'
 
 import styles from './Container.module.css'
 
 import {FaSearch} from "react-icons/fa";
 
 function Container() {
+
+    const [input, setInput] = useState('')
+
+    function handleSearch(){
+        alert('Valor do Input ' + input)
+    }
+
   return (
     <div className={ styles.container }>
         <h1 className={ styles.title }>Buscador de CEP</h1>
 
         <div className={ styles.containerInput }>
 
-            <input type='text' placeholder='Digite seu cep'/>
+            <input 
+            type='text' 
+            placeholder='Digite seu cep' 
+            value={input}
+            onChange = {(e/* evento */) => setInput(e.target.value)}/>
 
-            <button className={ styles.buttonSearch }>
+            <button className={ styles.buttonSearch } onClick={handleSearch}>
                 <FaSearch/>
             </button>
         </div>
