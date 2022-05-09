@@ -14,7 +14,7 @@ function Container() {
             <input type='text' placeholder='Digite seu cep'/>
 
             <button className={ styles.buttonSearch }>
-                <FaSearch size={25} color='#fff'/>
+                <FaSearch/>
             </button>
         </div>
 
